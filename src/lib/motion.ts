@@ -184,3 +184,4 @@ export const customEasing = {
   easeInOutCubic: [0.645, 0.045, 0.355, 1],
   easeInOutQuart: [0.77, 0, 0.175, 1],
 };
+

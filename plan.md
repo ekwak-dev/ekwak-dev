@@ -205,12 +205,67 @@ npm run lint && npm run build && npm run start
 - 변수(컬러/그리드/스페이싱) 테이블을 코드 토큰과 일치화
 - 주요 프레임의 스크린샷을 스토리북/드록 디렉터리에 참고 아트팩트로 보관(스토리북은 후속)
 
-## 20) 후속 이슈 분할(예시)
+## 20) 이슈 진행 상황 (최종 업데이트: 2025-09-14)
 
-- EKW-7: 스캐폴딩/CI 세팅
-- EKW-8: 토큰/테마 구현(Tailwind v4)
-- EKW-9: 레이아웃/헤더/푸터/내비
-- EKW-10: 홈 섹션(히어로/피처드 프로젝트/CTA)
-- EKW-11: 프로젝트/소개/연락 페이지
-- EKW-12: 애니메이션/폴리싱
-- EKW-13: 접근성/SEO/성능 점검, 문서화
+### ✅ 완료된 이슈들 (Done) - 17개
+
+#### 📋 메인 기능 이슈들
+- ✅ **EKW-6**: 프로젝트 초기화: Next.js 15 + Tailwind v4 + next-themes
+- ✅ **EKW-7**: 디자인 토큰/폰트 세팅: Labil Grotesk, 색/타이포 변수  
+- ✅ **EKW-8**: 레이아웃/내비/푸터 구현 + 다크모드 전환
+- ✅ **EKW-9**: 홈 섹션 구현: Hero / Projects 그리드 / Expertise
+- ✅ **EKW-11**: 접근성/SEO/성능 마감: Lighthouse AA/Best Practices 95+
+
+#### 🔧 세부 구현 이슈들
+- ✅ **EKW-12**: [Setup] Next.js 15(App Router) 프로젝트 스캐폴드
+- ✅ **EKW-13**: [Setup] Tailwind CSS v4 통합 및 기본 preset  
+- ✅ **EKW-15**: [Tokens] Labil Grotesk 폰트 통합(`next/font`)
+- ✅ **EKW-16**: [Tokens] 컬러/스페이싱/라운드 토큰 정의(라이트/다크)
+- ✅ **EKW-17**: [Nav][Desktop] 중앙 Pill 내비게이션 구현
+- ✅ **EKW-18**: [Nav][Mobile] 헤더/로고/메뉴 버튼
+- ✅ **EKW-19**: [Footer] Desktop/Tablet/Mobile 통합 가이드 구현
+- ✅ **EKW-20**: [Hero] 타이포 컴포지션/행간/브레이크포인트  
+- ✅ **EKW-21**: [Projects] 카드 그리드(2×2) + 반응형 규칙
+- ✅ **EKW-25**: [CTA] Let's talk 섹션 + 버튼 상호작용
+
+### 🚧 대기 중인 이슈들 (Todo) - 7개
+
+#### 🏗️ 미완성 기능들
+- 🔄 **EKW-10**: 배너/후기/CTA: 마퀴 배너, Testimonials, Let's talk
+- 🔄 **EKW-14**: [Setup] next-themes 구성(FOUC 방지, 시스템 테마)
+- 🔄 **EKW-22**: [Expertise] 4항목 레이아웃 + 섹션 헤더
+- 🔄 **EKW-23**: [Banner] 슬로건 텍스트 스트립(라이트/다크)
+- 🔄 **EKW-24**: [Testimonials] 타이포/레이아웃/작성자 메타
+- 🔄 **EKW-26**: [A11y] 시맨틱/헤딩/포커스/키보드 네비게이션
+
+#### 📚 Linear 기본 세팅 이슈들 (자동 생성)
+- 📖 **EKW-1**: Get familiar with Linear (1) - Linear 가이드
+- 📖 **EKW-2**: Set up your teams (2) - 팀 설정 가이드
+- 📖 **EKW-3**: Connect your tools (3) - 통합 도구 가이드
+- 📖 **EKW-4**: Import your data (4) - 데이터 가져오기 가이드
+
+### 📦 백로그 이슈들 (Backlog) - 1개
+- 📝 **EKW-5**: test 이슈 - 테스트용 이슈
+
+---
+
+### 🎯 다음 우선순위 작업
+
+1. **EKW-22**: Expertise 섹션 구현 (홈페이지 완성을 위해)
+2. **EKW-23**: 마퀴 배너 구현  
+3. **EKW-24**: Testimonials 섹션 구현
+4. **EKW-26**: 접근성 최종 검수
+5. **EKW-14**: next-themes 세부 설정 완료
+
+### 📊 현재 진행률
+- **완료**: 17개 이슈 (70.8%)
+- **대기**: 7개 이슈 (29.2%) 
+- **백로그**: 1개 이슈
+
+### 🚀 주요 완성 기능들
+- ✨ **프로젝트 초기 설정**: Next.js 15, Tailwind v4, TypeScript
+- 🎨 **디자인 시스템**: 토큰, 폰트, 다크모드 완전 구현  
+- 🧩 **레이아웃 컴포넌트**: 헤더, 푸터, 네비게이션 (데스크톱/모바일)
+- 🏠 **홈 섹션들**: Hero, Featured Projects, CTA 섹션
+- 🔍 **SEO 최적화**: manifest, robots, sitemap 파일
+- ♿ **접근성**: ARIA 라벨, 키보드 네비게이션, 포커스 관리

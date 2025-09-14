@@ -144,5 +144,10 @@ npm run ci
 
 ## 🙏 감사의 말
 
+<<<<<<< Current (Your changes)
+- 디자인: [Joey Portfolio Figma](https://www.figma.com/design/Ar4Raoh5BGzs57t5xHbeFS/Joey---Portfolio-Website--Community-?node-id=1-4&m=dev)
+- 구현 계획: [plan.md](./plan.md)
+=======
 - 디자인 참조: [Joey Portfolio Figma](https://www.figma.com/design/Ar4Raoh5BGzs57t5xHbeFS/Joey---Portfolio-Website--Community-?node-id=1-4&m=dev)
 - Next.js 팀과 오픈소스 커뮤니티에 감사드립니다.
+>>>>>>> Incoming (Background Agent changes)
