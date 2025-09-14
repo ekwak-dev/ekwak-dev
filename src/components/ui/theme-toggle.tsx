@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { Moon, Sun, Monitor } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -14,12 +15,9 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button
-        className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground-secondary transition-colors hover:bg-background-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        aria-label="테마 변경"
-      >
+      <div className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground-secondary">
         <Sun className="h-4 w-4" />
-      </button>
+      </div>
     );
   }
 
@@ -36,11 +34,11 @@ export function ThemeToggle() {
   const getIcon = () => {
     switch (theme) {
       case "light":
-        return <Sun className="h-4 w-4" />;
+        return Sun;
       case "dark":
-        return <Moon className="h-4 w-4" />;
+        return Moon;
       default:
-        return <Monitor className="h-4 w-4" />;
+        return Monitor;
     }
   };
 
@@ -55,14 +53,38 @@ export function ThemeToggle() {
     }
   };
 
+  const IconComponent = getIcon();
+
   return (
-    <button
+    <motion.button
       onClick={cycleTheme}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground-secondary transition-colors hover:bg-background-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="relative inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground-secondary transition-colors hover:bg-background-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       aria-label={`현재 테마: ${getLabel()}. 클릭하여 변경`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
-      {getIcon()}
-    </button>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={theme}
+          initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+          exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+        >
+          <IconComponent className="h-4 w-4" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Theme indicator */}
+      <motion.div
+        className="absolute -bottom-1 -right-1 h-2 w-2 rounded-full"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        style={{
+          backgroundColor: theme === "light" ? "#fbbf24" : theme === "dark" ? "#6366f1" : "#10b981"
+        }}
+      />
+    </motion.button>
   );
 }
 

@@ -12,7 +12,7 @@ import {
 
 export function CTASection() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-32">
+    <section className="relative overflow-hidden py-20 sm:py-32" aria-label="대화 요청 섹션">
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-accent/5 via-transparent to-accent/5" />
 

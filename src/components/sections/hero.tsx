@@ -12,6 +12,7 @@ export function HeroSection() {
       initial="initial"
       animate="animate"
       variants={staggerContainer}
+      aria-label="소개 섹션"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 -z-10">

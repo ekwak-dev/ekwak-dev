@@ -56,6 +56,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          storageKey="ekwak-dev-theme"
         >
           <div className="flex min-h-screen flex-col">
             <Header />
