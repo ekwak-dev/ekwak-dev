@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ekwak-dev
 
-## Getting Started
+Figma 디자인을 기반으로 한 모던 포트폴리오 웹사이트입니다. Next.js 15 (App Router) + Tailwind CSS v4 + next-themes로 구현되었습니다.
 
-First, run the development server:
+## 기술 스택
+
+- **프레임워크**: Next.js 15 (App Router), React 19, TypeScript
+- **스타일링**: Tailwind CSS v4, next-themes (다크/라이트 테마)
+- **UI 컴포넌트**: Radix Primitives, Lucide Icons
+- **애니메이션**: Framer Motion
+- **유효성 검사**: Zod
+- **코드 품질**: ESLint, Prettier
+
+## 시작하기
+
+### 개발 서버 실행
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000)에서 결과를 확인하세요.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 빌드 및 배포
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# 프로덕션 빌드
+npm run build
 
-## Learn More
+# 프로덕션 서버 시작
+npm run start
 
-To learn more about Next.js, take a look at the following resources:
+# 린팅 검사
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 프로젝트 구조
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+├─ src/
+│  ├─ app/                 # Next.js App Router 페이지
+│  ├─ components/          # 재사용 가능한 컴포넌트
+│  │  ├─ layout/           # 레이아웃 컴포넌트 (Header, Footer, Nav)
+│  │  ├─ ui/               # 기본 UI 컴포넌트
+│  │  └─ sections/         # 페이지 섹션 컴포넌트
+│  ├─ lib/                 # 유틸리티 함수
+│  └─ content/             # 정적 콘텐츠 데이터
+├─ public/                 # 정적 자산
+└─ plan.md                 # 프로젝트 구현 계획
+```
 
-## Deploy on Vercel
+## 디자인 시스템
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **접근성**: WCAG 2.1 AA 준수
+- **반응형**: 모바일 퍼스트 (320px~)
+- **테마**: 다크/라이트 모드 지원
+- **타이포그래피**: 시스템 폰트 최적화
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 참고 자료
+
+- 디자인: [Joey Portfolio Figma](https://www.figma.com/design/Ar4Raoh5BGzs57t5xHbeFS/Joey---Portfolio-Website--Community-?node-id=1-4&m=dev)
+- 구현 계획: [plan.md](./plan.md)
