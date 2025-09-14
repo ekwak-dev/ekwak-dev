@@ -27,16 +27,35 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 모바일 메뉴가 열릴 때 스크롤 방지
+  // 모바일 메뉴가 열릴 때 스크롤 방지 및 키보드 접근성 관리
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      // 모바일 메뉴가 열릴 때 첫 번째 링크에 포커스
+      const firstLink = document.querySelector('#mobile-menu a') as HTMLElement;
+      if (firstLink) {
+        firstLink.focus();
+      }
     } else {
       document.body.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
     };
+  }, [mobileMenuOpen]);
+
+  // ESC 키로 모바일 메뉴 닫기
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      return () => document.removeEventListener("keydown", handleKeyDown);
+    }
   }, [mobileMenuOpen]);
 
   return (

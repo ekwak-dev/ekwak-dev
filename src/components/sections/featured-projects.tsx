@@ -49,7 +49,7 @@ const featuredProjects = [
 
 export function FeaturedProjectsSection() {
   return (
-    <section className="py-20 sm:py-32">
+    <section className="py-20 sm:py-32" aria-label="주요 프로젝트 섹션">
       <div className="container">
         <div className="mx-auto max-w-6xl">
           {/* Section header */}

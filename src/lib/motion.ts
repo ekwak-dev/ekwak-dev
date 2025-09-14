@@ -1,5 +1,25 @@
 import { Variants } from "framer-motion";
 
+// Check for reduced motion preference
+const prefersReducedMotion = () => {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+};
+
+// Create motion-safe variants that respect user preferences
+const createMotionSafeVariants = (variants: Variants): Variants => {
+  if (prefersReducedMotion()) {
+    return {
+      initial: { opacity: 0 },
+      animate: { 
+        opacity: 1,
+        transition: { duration: 0.01 } // Minimal transition for accessibility
+      },
+    };
+  }
+  return variants;
+};
+
 // Fade animations
 export const fadeIn: Variants = {
   initial: {
@@ -172,6 +192,15 @@ export const pageTransition: Variants = {
   },
 };
 
+// Motion-safe variants that respect user preferences
+export const fadeInSafe = createMotionSafeVariants(fadeIn);
+export const fadeInUpSafe = createMotionSafeVariants(fadeInUp);
+export const fadeInDownSafe = createMotionSafeVariants(fadeInDown);
+export const slideInFromLeftSafe = createMotionSafeVariants(slideInFromLeft);
+export const slideInFromRightSafe = createMotionSafeVariants(slideInFromRight);
+export const scaleInSafe = createMotionSafeVariants(scaleIn);
+export const textRevealSafe = createMotionSafeVariants(textReveal);
+
 // Viewport options for scroll animations
 export const viewportOptions = {
   once: true,
@@ -184,4 +213,7 @@ export const customEasing = {
   easeInOutCubic: [0.645, 0.045, 0.355, 1],
   easeInOutQuart: [0.77, 0, 0.175, 1],
 };
+
+// Utility to check if motion should be reduced
+export const shouldReduceMotion = prefersReducedMotion;
 
