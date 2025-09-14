@@ -205,7 +205,43 @@ npm run lint && npm run build && npm run start
 - 변수(컬러/그리드/스페이싱) 테이블을 코드 토큰과 일치화
 - 주요 프레임의 스크린샷을 스토리북/드록 디렉터리에 참고 아트팩트로 보관(스토리북은 후속)
 
-## 20) 이슈 진행 상황 (최종 업데이트: 2025-09-14)
+## 20) 디자인 비교 분석 결과 (2025-09-14)
+
+### 🔍 Figma vs 현재 구현 비교 분석
+
+Figma MCP와 Playwright MCP를 사용하여 디자인과 구현을 비교한 결과:
+
+#### 📊 주요 차이점
+1. **테마**: Figma(다크) vs 현재(라이트)  
+2. **폰트**: Labil Grotesk vs Inter
+3. **브랜드**: Joey(디자이너) vs Ekwak(개발자)
+4. **콘텐츠**: 완전히 다른 프로젝트와 전문 영역
+
+#### 🚨 발견된 이슈들
+- CSS merge conflict 마커로 인한 빌드 오류 → 수정 완료
+- 컨셉과 시각적 스타일의 불일치
+- 레이아웃과 타이포그래피 스케일 차이
+
+#### 📋 생성된 Linear 이슈
+- **EKW-27**: "Figma 디자인과 현재 구현 간 불일치 문제" (우선순위: Urgent) 
+- URL: https://linear.app/ekwak-dev/issue/EKW-27/figma-디자인과-현재-구현-간-불일치-문제
+
+---
+
+## 21) Figma 디자인 스크린샷 레퍼런스
+
+Linear 이슈 [EKW-27](https://linear.app/ekwak-dev/issue/EKW-27/figma-디자인과-현재-구현-간-불일치-문제)을 해결하기 위한 시각적 레퍼런스입니다. Figma 파일에는 홈 페이지만 기기 및 테마별로 디자인되어 있습니다.
+
+- **Home - Dark Mode (Desktop)**: (2025-09-14 07:01 에 제공됨)
+- **Home - Light Mode (Desktop)**: (2025-09-14 07:06 에 제공됨)
+- **Home - Dark Mode (Tablet)**: (2025-09-14 07:11 에 제공됨)
+- **Home - Dark Mode (Mobile)**: (2025-09-14 07:11 에 제공됨)
+- **Home - Light Mode (Tablet)**: (2025-09-14 07:12 에 제공됨)
+- **Home - Light Mode (Mobile)**: (2025-09-14 07:12 에 제공됨)
+
+---
+
+## 22) 이슈 진행 상황 (최종 업데이트: 2025-09-14)
 
 ### ✅ 완료된 이슈들 (Done) - 17개
 
