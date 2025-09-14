@@ -1,16 +1,19 @@
 ## EKW-6: Implementing portfolio website with Figma — 구현 계획
 
 ### 요약
+
 - Figma 디자인을 기준으로 Next.js 15(App Router) + Tailwind CSS v4 + next-themes 조합으로 반응형/접근성(AA)/다크-라이트 테마 포트폴리오 웹사이트를 구현합니다.
 - 본 문서는 아키텍처, 디렉터리 구조, 디자인 토큰/테마, 페이지/컴포넌트 매핑, 애니메이션, SEO/성능, 테스트/CI, 마일스톤, 위험요소, DOD를 정의합니다.
 - 현재 이슈(EKW-6) 범위: 프로젝트 초기화(Next.js 15 + Tailwind v4 + next-themes) 환경 구성
 
 ### 참고 자료
+
 - 디자인: Joey Portfolio Figma ([링크](https://www.figma.com/design/Ar4Raoh5BGzs57t5xHbeFS/Joey---Portfolio-Website--Community-?node-id=1-4&m=dev))
 - 전역 규칙: `README.md`, 접근성/SEO/성능 원칙(AA, 메타/OG, 이미지 최적화 등)
 - 워크스페이스 규칙: 10-typescript-react, 20-tailwind-theme 준수
 
 ## 1) 범위 & 목표
+
 - **범위**: 퍼스널 포트폴리오 웹 전체(홈/프로젝트/소개/연락 + 공통 레이아웃/테마/컴포넌트)
 - **목표**:
   - 모바일 퍼스트, 320px~ 대형 데스크톱까지 반응형
@@ -20,6 +23,7 @@
   - 간결하고 재사용 가능한 컴포넌트 구조
 
 ## 2) 산출물(Deliverables)
+
 - Next.js TypeScript 앱 스캐폴딩과 기본 레이아웃/네비게이션
 - Tailwind CSS v4 기반 디자인 토큰(색상/타이포/간격) 및 다크/라이트 테마
 - 공통 UI 컴포넌트(헤더/푸터/네비/버튼/카드/토글/배지)
@@ -28,6 +32,7 @@
 - ESLint/Prettier/Type-checked CI, 기본 테스트(컴포넌트 스냅샷/접근성 스모크)
 
 ## 3) 기술 스택
+
 - **런타임/프레임워크**: Next.js 15(App Router), React 18, TypeScript
 - **스타일/테마**: Tailwind CSS v4, next-themes
 - **UI/아이콘**: Radix Primitives, Lucide Icons
@@ -37,12 +42,14 @@
 - **품질/CI**: ESLint, Prettier, GitHub Actions
 
 ## 4) 아키텍처 & 디렉터리 구조
+
 - **App Router 레이아웃**
   - `app/layout.tsx`: 전역 레이아웃, 폰트, 테마 Provider, 메타데이터
   - `app/page.tsx`: 홈
   - `app/(site)/about/page.tsx`, `app/(site)/projects/page.tsx`, `app/(site)/contact/page.tsx`
   - `app/not-found.tsx`: 404
 - **권장 디렉터리**
+
 ```
 / (repo root)
 ├─ app/
@@ -70,6 +77,7 @@
 ```
 
 ## 5) 디자인 토큰 & 테마(다크/라이트)
+
 - **색상 토큰**: `--color-bg`, `--color-fg`, `--color-accent`, `--color-muted`, `--color-border`
   - 라이트/다크 테마에서 토큰 값을 다르게 매핑
   - 대비(텍스트 4.5:1 이상) 보장
@@ -79,12 +87,14 @@
 - `next-themes`로 `html`에 `class="dark"` 토글, 시스템 선호도 연동 옵션
 
 ## 6) 레이아웃 & 내비게이션
+
 - 고정 헤더(스크롤 시 배경 블러/엷은 보더), 스킵 링크 제공
 - 섹션 구획: Hero / About / Projects / Contact
 - 푸터: 저작권, 소셜 링크, 테마 토글 보조 배치
 - 모바일 내비: 햄버거 + 모션 메뉴, 포커스 트랩 주의(트랩 금지)
 
 ## 7) 페이지 매핑(Figma → 구현)
+
 - **Home**: Hero(이름/역할/CTA), Featured Projects, About Preview, Contact CTA
 - **Projects**: 그리드/필터(옵션), 카드 hover 모션, 상세(옵션)
 - **About**: 소개/스킬 배지/타임라인(경력)
@@ -92,6 +102,7 @@
 - **404**: 가벼운 일러스트/복귀 링크
 
 ## 8) UI 컴포넌트(예시)
+
 - 레이아웃: `Header`, `Footer`, `Navigation`, `ThemeToggle`
 - Section Wrappers: `Section`, `SectionHeader`, `SectionBody`
 - UI: `Button`, `Badge`, `Card`, `Tooltip`(Radix), `Icon`(Lucide)
@@ -99,33 +110,39 @@
 - 접근성 유틸: `VisuallyHidden`, SkipLink
 
 ## 9) 애니메이션/인터랙션
+
 - 최초 로드 페이드/슬라이드, in-view 시 섹션 리빌
 - 카드 hover 엘리베이션/그라데이션, 내비 오픈/클로즈 모션
 - 모션 선호도(`prefers-reduced-motion`) 존중
 
 ## 10) SEO/메타/OG
+
 - `app/metadata` 설정: `title`, `description(<=160)`, `openGraph`, `twitter`
 - 의미 있는 링크 앵커 텍스트, 외부 링크 `rel="noopener"`
 - 정적 OG 이미지 또는 동적 `opengraph-image.tsx`
 
 ## 11) 성능 가이드
+
 - 폰트: 서브셋 + `display: swap`, `next/font` 사용
 - 이미지: `next/image`로 사이즈/`sizes` 지정, critical만 `priority`
 - 스크롤 관찰 최적화, 불필요한 재렌더 방지(메모/분리)
 
 ## 12) 데이터 모델(정적 콘텐츠)
+
 - `Project`: `id`, `title`, `summary`, `tech`, `links`, `cover`, `year`
 - `Experience`: `id`, `company`, `role`, `period`, `highlights`
 - `Social`: `id`, `name`, `url`, `icon`
 - Zod 스키마로 정적 데이터 검증
 
 ## 13) 테스트/품질/CI
+
 - Lint: ESLint(접근성 플러그인 포함), Prettier
 - 단위/스냅샷: Testing Library + Vitest
 - E2E: Playwright(헤더 내비, 테마 토글, 기본 라우팅)
 - CI: GitHub Actions(install → lint → typecheck → test → build)
 
 ## 14) 마일스톤 & 일정(초안)
+
 - M1. 스캐폴딩/CI(0.5d)
 - M2. 토큰/테마/글로벌 스타일(0.5d)
 - M3. 레이아웃/내비/푸터(0.5d)
@@ -135,16 +152,19 @@
 - M7. 접근성/SEO/성능 점검(0.5d)
 
 ## 15) 리스크 & 대응
+
 - Tailwind v4 마이그레이션 이슈: 필요시 v3 프리셋 임시 사용 → v4 규칙 반영 후 상향
 - Figma 명명/컴포넌트 매핑 불일치: Code Connect/토큰 정의로 정렬, 변수 테이블 동기화
 - 이미지/라이선스: 오픈 라이선스 자산만 사용, 대체텍스트 준비
 
 ## 16) Definition of Done — EKW-6
+
 - 본 계획 문서(`plan.md`)가 합의/머지됨
 - 디자인 토큰/테마 전략, 디렉터리 구조, 컴포넌트/페이지 목록이 확정됨
 - 초기 스캐폴딩과 기본 레이아웃 계획이 승인됨(코드 작업은 후속 이슈로 분할 가능)
 
 ## 17) 작업 목록 & PR 계획(체크리스트)
+
 - [ ] 스캐폴딩: Next.js TS 앱, Tailwind v4, next-themes, Radix, Lucide, Motion, Zod
 - [ ] 전역 설정: ESLint/Prettier/tsconfig, CI 워크플로
 - [ ] 토큰/테마: 색상/타이포/간격 변수, 다크/라이트 매핑, 접근성 대비 확인
@@ -156,6 +176,7 @@
 - [ ] 문서화: `README.md` 사용법/스크립트, 디자인 결정 기록
 
 ## 18) 실행 커맨드(참고용)
+
 > 실제 실행은 구현 이슈에서 진행합니다. 아래는 비대화형 플래그 예시입니다.
 
 ```bash
@@ -179,11 +200,13 @@ npm run lint && npm run build && npm run start
 ```
 
 ## 19) Figma 연동 전략(옵션)
+
 - Code Connect로 컴포넌트 소스 매핑, 레이어 네이밍 → 컴포넌트 Prop 정렬
 - 변수(컬러/그리드/스페이싱) 테이블을 코드 토큰과 일치화
 - 주요 프레임의 스크린샷을 스토리북/드록 디렉터리에 참고 아트팩트로 보관(스토리북은 후속)
 
 ## 20) 후속 이슈 분할(예시)
+
 - EKW-7: 스캐폴딩/CI 세팅
 - EKW-8: 토큰/테마 구현(Tailwind v4)
 - EKW-9: 레이아웃/헤더/푸터/내비
