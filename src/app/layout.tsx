@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
   title: "Ekwak Dev - Portfolio",
-  description: "Modern portfolio website built with Next.js and Tailwind CSS",
+  description:
+    "Next.js와 Tailwind CSS로 제작한 Ekwak의 포트폴리오. 모던 프론트엔드/풀스택 프로젝트, 전문 분야, 연락처 정보를 한 곳에서 확인하세요.",
   keywords: ["portfolio", "developer", "web development", "Next.js", "React"],
   authors: [{ name: "Ekwak" }],
   creator: "Ekwak",
@@ -21,13 +22,15 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: "https://ekwak.dev",
     title: "Ekwak Dev - Portfolio",
-    description: "Modern portfolio website built with Next.js and Tailwind CSS",
+    description:
+      "Next.js와 Tailwind CSS로 제작한 Ekwak의 포트폴리오. 모던 프론트엔드/풀스택 프로젝트, 전문 분야, 연락처 정보를 한 곳에서 확인하세요.",
     siteName: "Ekwak Dev",
   },
   twitter: {
     card: "summary_large_image",
     title: "Ekwak Dev - Portfolio",
-    description: "Modern portfolio website built with Next.js and Tailwind CSS",
+    description:
+      "Next.js와 Tailwind CSS로 제작한 Ekwak의 포트폴리오. 모던 프론트엔드/풀스택 프로젝트, 전문 분야, 연락처 정보를 한 곳에서 확인하세요.",
     creator: "@ekwak",
   },
   robots: {
@@ -50,10 +53,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
           storageKey="ekwak-dev-theme"

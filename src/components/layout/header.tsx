@@ -86,29 +86,30 @@ export function Header() {
               Ekwak<span className="text-accent">.</span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex md:items-center md:gap-8">
-              <ul className="flex items-center gap-6">
-                {navigation.map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <li key={item.name}>
-                      <Link
-                        href={item.href}
-                        className={`relative py-2 text-sm font-medium transition-colors hover:text-accent ${
-                          isActive ? "text-accent" : "text-foreground-secondary"
-                        }`}
-                        aria-current={isActive ? "page" : undefined}
-                      >
-                        {item.name}
-                        {isActive && (
-                          <span className="absolute -bottom-px left-0 right-0 h-0.5 bg-accent" />
-                        )}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+            {/* Desktop Navigation (Pill Group) */}
+            <div className="hidden md:flex md:items-center md:gap-6">
+              <div className="rounded-full border border-border bg-background/70 px-1.5 py-1 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <ul className="flex items-center gap-1">
+                  {navigation.map((item) => {
+                    const isActive = pathname === item.href;
+                    return (
+                      <li key={item.name}>
+                        <Link
+                          href={item.href}
+                          className={`inline-flex items-center rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                            isActive
+                              ? "bg-foreground text-background"
+                              : "text-foreground-tertiary hover:text-foreground"
+                          }`}
+                          aria-current={isActive ? "page" : undefined}
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
               <ThemeToggle />
             </div>
 

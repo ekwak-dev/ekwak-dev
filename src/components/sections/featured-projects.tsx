@@ -47,176 +47,83 @@ const featuredProjects = [
   },
 ];
 
+const projectTiles = [
+  { id: "crty", title: "Crty", subtitle: "Mobile App", color: "bg-purple-500" },
+  { id: "tensto", title: "Tensto", subtitle: "Web Design", color: "bg-lime-400" },
+  { id: "senta", title: "Senta", subtitle: "Mobile App & Branding", color: "bg-sky-500" },
+  { id: "crnt", title: "Crnt", subtitle: "Mobile App", color: "bg-orange-400" },
+];
+
 export function FeaturedProjectsSection() {
   return (
-    <section className="py-20 sm:py-32" aria-label="주요 프로젝트 섹션">
+    <section id="projects" className="py-20 sm:py-32" aria-label="주요 프로젝트 섹션">
       <div className="container">
         <div className="mx-auto max-w-6xl">
           {/* Section header */}
           <motion.div
-            className="mb-12 text-center"
+            className="mb-6 flex items-end justify-between"
             initial="initial"
             whileInView="animate"
             viewport={viewportOptions}
             variants={staggerContainer}
           >
-            <motion.h2
-              className="mb-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl"
-              variants={fadeInUp}
-            >
-              주요 프로젝트
-            </motion.h2>
-            <motion.p
-              className="text-lg text-foreground-secondary"
-              variants={fadeInUp}
-            >
-              최근에 작업한 프로젝트들을 소개합니다
-            </motion.p>
+            <div>
+              <motion.h2
+                className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
+                variants={fadeInUp}
+              >
+                Projects
+              </motion.h2>
+              <motion.p
+                className="mt-2 text-sm text-foreground-tertiary"
+                variants={fadeInUp}
+              >
+                A showcase of contemporary, user-friendly web design and digital solutions.
+              </motion.p>
+            </div>
+            <motion.div variants={fadeInUp}>
+              <Link href="/projects" className="text-sm text-foreground-tertiary hover:text-foreground transition-colors">
+                More →
+              </Link>
+            </motion.div>
           </motion.div>
 
-          {/* Projects grid */}
-          <div className="grid gap-8 lg:gap-12">
-            {featuredProjects.map((project, index) => (
-              <motion.article
-                key={project.id}
-                className={`group grid gap-8 ${
-                  index % 2 === 0 ? "lg:grid-cols-2" : "lg:grid-cols-2"
-                }`}
+          {/* Projects tiles (2x2) */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {projectTiles.map((tile, idx) => (
+              <motion.div
+                key={tile.id}
+                className="group"
                 initial="initial"
                 whileInView="animate"
                 viewport={viewportOptions}
                 variants={staggerContainer}
               >
-                {/* Project image */}
                 <motion.div
-                  className={`relative aspect-video overflow-hidden rounded-lg bg-background-secondary ${
-                    index % 2 === 1 ? "lg:order-2" : ""
-                  }`}
-                  variants={
-                    index % 2 === 0 ? slideInFromLeft : slideInFromRight
-                  }
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5" />
-                  <div className="flex h-full items-center justify-center text-foreground-tertiary">
-                    <span className="text-sm">Project Preview</span>
-                  </div>
-
-                  {/* Hover overlay */}
-                  <motion.div
-                    className="absolute inset-0 flex items-center justify-center bg-background/90"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="flex gap-4">
-                      <motion.a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                        aria-label="라이브 데모 보기"
-                      >
-                        <ArrowUpRight className="h-5 w-5" />
-                      </motion.a>
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-background border border-border text-foreground"
-                        whileHover={{ scale: 1.1, rotate: -5 }}
-                        whileTap={{ scale: 0.95 }}
-                        aria-label="GitHub 저장소 보기"
-                      >
-                        <Github className="h-5 w-5" />
-                      </motion.a>
-                    </div>
-                  </motion.div>
-                </motion.div>
-
-                {/* Project content */}
-                <motion.div
-                  className={`flex flex-col justify-center ${
-                    index % 2 === 1 ? "lg:order-1" : ""
-                  }`}
-                  variants={
-                    index % 2 === 0 ? slideInFromRight : slideInFromLeft
-                  }
-                >
-                  <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-foreground group-hover:text-accent transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-foreground-secondary">
-                      {project.description}
-                    </p>
-
-                    {/* Tech stack */}
-                    <motion.div
-                      className="flex flex-wrap gap-2"
-                      variants={staggerContainer}
-                      initial="initial"
-                      whileInView="animate"
-                      viewport={viewportOptions}
-                    >
-                      {project.tech.map((tech, techIndex) => (
-                        <motion.span
-                          key={tech}
-                          className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground-secondary"
-                          variants={fadeInUp}
-                          custom={techIndex}
-                          whileHover={{ scale: 1.05, y: -2 }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </motion.div>
-
-                    {/* Links */}
-                    <div className="flex gap-4 pt-4">
-                      <motion.a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
-                        whileHover={{ x: 5 }}
-                      >
-                        라이브 데모
-                        <ArrowUpRight className="h-4 w-4" />
-                      </motion.a>
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-medium text-foreground-secondary hover:text-accent transition-colors"
-                        whileHover={{ x: 5 }}
-                      >
-                        <Github className="h-4 w-4" />
-                        소스 코드
-                      </motion.a>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.article>
+                  className={`aspect-[4/3] w-full overflow-hidden rounded-xl ${tile.color}`}
+                  variants={idx % 2 === 0 ? slideInFromLeft : slideInFromRight}
+                  whileHover={{ scale: 1.01 }}
+                  transition={{ duration: 0.25 }}
+                  aria-hidden
+                />
+                <div className="mt-2">
+                  <h3 className="text-sm font-semibold text-foreground">{tile.title}</h3>
+                  <p className="text-xs text-foreground-tertiary">{tile.subtitle}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
 
           {/* View all projects link */}
           <motion.div
-            className="mt-12 text-center"
+            className="mt-8 text-center"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={viewportOptions}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.2 }}
           >
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
-            >
-              모든 프로젝트 보기
+            <Link href="/projects" className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline">
+              View all projects
               <ArrowUpRight className="h-4 w-4" />
             </Link>
           </motion.div>

@@ -44,7 +44,7 @@ export function HeroSection() {
       </div>
 
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-3xl text-left">
           {/* Badge */}
           <motion.div
             className="mb-8 inline-flex items-center rounded-full border border-border bg-background/50 px-4 py-1.5 text-sm backdrop-blur-sm"
@@ -58,63 +58,36 @@ export function HeroSection() {
 
           {/* Main heading */}
           <motion.h1
-            className="mb-6 text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+            className="mb-4 text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
             variants={textReveal}
           >
-            안녕하세요,
+            Websites&
             <br />
-            <motion.span
-              className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent"
-              animate={{
-                backgroundPosition: ["0%", "100%", "0%"],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              style={{
-                backgroundSize: "200% auto",
-              }}
-            >
-              개발자 Ekwak
-            </motion.span>
-            입니다
+            Branding
           </motion.h1>
 
           {/* Description */}
           <motion.p
-            className="mb-10 text-lg text-foreground-secondary sm:text-xl"
+            className="mb-8 max-w-prose text-base text-foreground-tertiary sm:text-lg"
             variants={fadeInUp}
           >
-            사용자 경험을 최우선으로 생각하며,
-            <br />
-            모던하고 확장 가능한 웹 애플리케이션을 만들고 있습니다.
+            As a passionate product designer specializing in branding, marketing,
+            and end-to-end tools, I help elevate the essence of your brand.
           </motion.p>
 
           {/* CTA buttons */}
           <motion.div
-            className="flex flex-col gap-4 sm:flex-row sm:justify-center"
+            className="flex flex-col gap-3 sm:flex-row"
             variants={fadeInUp}
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <Link
-                href="/projects"
-                className="group inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-3 text-sm font-medium text-accent-foreground transition-all hover:bg-accent-hover hover:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                프로젝트 보기
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                Scroll Down
+                <ArrowRight className="h-4 w-4" />
               </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a
-                href="/resume.pdf"
-                download
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-border bg-background px-8 py-3 text-sm font-medium text-foreground transition-colors hover:bg-background-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                <Download className="h-4 w-4" />
-                이력서 다운로드
-              </a>
             </motion.div>
           </motion.div>
 

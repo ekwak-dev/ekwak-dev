@@ -24,7 +24,10 @@
     --color-error: 239 68 68; /* red-500 */
 
     /* Typography */
+    /* next/font 변수(예: --font-space-grotesk, --font-inter)가 있을 경우 우선 사용 */
     --font-sans:
+      var(--font-space-grotesk),
+      var(--font-inter),
       -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       Arial, sans-serif;
     --font-mono:

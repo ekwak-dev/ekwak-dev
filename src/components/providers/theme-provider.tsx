@@ -19,14 +19,8 @@ export function ThemeProvider({ children, ...props }: EnhancedThemeProviderProps
     setMounted(true);
   }, []);
 
-  // Prevent FOUC by not rendering theme-dependent content until mounted
-  if (!mounted) {
-    return (
-      <div className="bg-background text-foreground">
-        {children}
-      </div>
-    );
-  }
+  // 마운트 전엔 children을 렌더하지 않아 테마 FOUC를 방지
+  if (!mounted) return null;
 
   return (
     <ThemeProviderContent {...props}>
