@@ -1,0 +1,20 @@
+---
+globs: *.tsx,*.css
+description: Tailwind CSS v4 / 다크-라이트 테마 규칙
+---
+# Tailwind & 테마 규칙
+
+## 설계
+- 색/타이포 그래피는 CSS 변수로 선언하고 Tailwind 유틸에서 참조
+- 다크 모드는 `.dark` 클래스로 제어(next-themes `attribute="class"`)
+
+## 유틸 사용
+- 간격은 Tailwind 스케일 우선, 임의 값은 최소화([tokens](mdc:README.md) 참조)
+- 반응형은 모바일 퍼스트(`sm`, `md`, `lg`, `xl`)
+
+## 모션
+- transform/opacity 중심, `prefers-reduced-motion` 존중
+
+## 컴포넌트 지침
+- 재사용 가능한 컴포넌트엔 variant props 대신 Tailwind `data-*` 조합 또는 Radix 상태 클래스를 사용
+
